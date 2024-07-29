@@ -1,0 +1,19 @@
+##### Installation guide #####
+
+# Set up the nginx container
+$ docker build -t shitr-nginx . 
+$ docker run --name shitr-nginx -d -p 8080:80 shitr-nginx
+
+# Set up the database
+docker run --name shitr-postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 postgres
+
+# Set up venv
+$ python -m venv venv
+
+# Install django
+python -m pip install Django
+
+# Install psycopg
+$ pip install psycopg2
+
+
