@@ -1,18 +1,18 @@
 # shitr_users/serializers.py
 
 from rest_framework import serializers
-from .models import CustomUser
+from .models import ShitrUser
 
-class CustomUserSerializer(serializers.ModelSerializer):
+class ShitrUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = ShitrUser
         fields = ['username', 'email', 'password']
         extra_kwargs = {
             'password': {'write_only': True}
         }
 
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(
+        user = ShitrUser.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
             password=validated_data['password']
