@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 
-class CustomUserManager(BaseUserManager):
+class ShitrUserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError(_('The Email field must be set'))
@@ -18,14 +18,14 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(username, email, password, **extra_fields)
 
-class CustomUser(AbstractBaseUser):
+class ShitrUser(AbstractBaseUser):
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     # Add other fields as needed
 
-    objects = CustomUserManager()
+    objects = ShitrUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

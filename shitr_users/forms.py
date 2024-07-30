@@ -1,12 +1,12 @@
 # shitr_users/forms.py
 from django import forms
-from .models import CustomUser
+from .models import ShitrUser
 
-class CustomUserCreationForm(forms.ModelForm):
+class ShitrUserCreationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = CustomUser
+        model = ShitrUser
         fields = ['email', 'username', 'password']
 
     def save(self, commit=True):

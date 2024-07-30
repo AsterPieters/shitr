@@ -1,8 +1,8 @@
 # shitr_users/admin.py
 from django.contrib import admin
-from .models import CustomUser
+from .models import ShitrUser
 
-@admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
+@admin.register(ShitrUser)
+class ShitrUserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email')
     search_fields = ('username', 'email')
