@@ -1,6 +1,5 @@
-// src/components/UserRegistrationForm.js
-
 import React, { useState } from 'react';
+import './UserRegistrationForm.css'; // Import the CSS file
 
 const UserRegistrationForm = () => {
   const [username, setUsername] = useState('');
@@ -16,18 +15,24 @@ const UserRegistrationForm = () => {
       return;
     }
 
-    const response = await fetch('http://localhost:8001/api/registration/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password }),
-    });
+    try {
+      const response = await fetch('http://localhost:8001/api/users/create/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
 
-    if (response.ok) {
-      console.log('User created successfully');
-    } else {
-      console.error('Failed to create user');
+      if (response.ok) {
+        console.log('User created successfully');
+      } else {
+        console.error('Failed to create user');
+        setError('Failed to create user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError('An error occurred. Please try again.');
     }
   };
 
@@ -39,6 +44,7 @@ const UserRegistrationForm = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your username"
         />
       </label>
       <label>
@@ -47,6 +53,7 @@ const UserRegistrationForm = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
         />
       </label>
       <label>
@@ -55,13 +62,13 @@ const UserRegistrationForm = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
         />
       </label>
       <button type="submit">Register</button>
-      {error && <div className="error">{JSON.stringify(error)}</div>}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };
 
 export default UserRegistrationForm;
-

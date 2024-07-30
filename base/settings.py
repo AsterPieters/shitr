@@ -34,13 +34,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'shitr_users',
+    'shitr_posts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'geeks',
 ]
 
 MIDDLEWARE = [

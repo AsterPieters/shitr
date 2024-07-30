@@ -1,9 +1,9 @@
 # shitr_posts/admin.py
 
 from django.contrib import admin
-from .models import CustomUser
+from .models import ShitrPost
 
-@admin.register(DefaulPost)
-class CustomUserAdmin(admin.ModelAdmin):
+@admin.register(ShitrPost)
+class ShitrPostAdmin(admin.ModelAdmin):
     list_display = ('location', 'username', 'rating')
     search_fields = ('location', 'username')

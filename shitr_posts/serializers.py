@@ -1,7 +1,7 @@
 # shitr_posts/serializers.py
 
 from rest_framework import serializers
-from .models import 
+from .models import ShitrPost
 
 class ShitrPostsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,4 @@ class ShitrPostsSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             rating=validated_data['rating']
         )
-        return user
+        return post

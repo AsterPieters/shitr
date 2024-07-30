@@ -16,4 +16,6 @@ python -m pip install Django
 # Install psycopg
 $ pip install psycopg2
 
+# Npm packages
+npm install react-router-dom
 
