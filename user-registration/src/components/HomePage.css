@@ -19,3 +19,46 @@
 h1{
     text-align: center;
 }
+
+h2 {
+    font-size: 18px; 
+    font-weight: 900;
+    margin: 0px 0;
+}
+
+h3{
+    font-size: 12px; 
+    margin: 0px 0;
+    color: #797979;
+}
+
+h4{
+    font-size: 30px; 
+    margin: 20px 0;
+}
+
+h5{
+    font-size: 16px;          /* Larger font size */
+    line-height: 2.0;         /* More spacing between lines */
+    color: #555;              /* Slightly darker text color */
+    margin: 15px 0;           /* Larger vertical margin */
+    padding: 15px;            /* More padding */
+    border-left: 4px solid #a1470a; /* Left border to highlight */
+    background-color: #f1f1f1; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.post p {
+    font-size: 16px;          /* Larger font size */
+    line-height: 0.3;         /* More spacing between lines */
+    color: #555;              /* Slightly darker text color */
+    margin: 5px 0;           /* Larger vertical margin */
+    padding: 15px;            /* More padding */
+    border-left: 4px solid #a1470a; /* Left border to highlight */
+    background-color: #f1f1f1; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.post  {
+  font-weight: bold;
+}
