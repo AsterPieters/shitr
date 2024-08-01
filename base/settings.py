@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'shitr',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'django-db-1',
+        'HOST': 'shitr-db-1',
         'PORT': '5432',
     }
 }

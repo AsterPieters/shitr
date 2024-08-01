@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: shitr
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    volumes:
+      - .:/opt/django/
+    ports:
+      - "8081:8001"
+    depends_on:
+      - db
+    working_dir: /opt/django
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    volumes:
+      - .:/opt/src
+    ports:
+      - "8080:8000"
+    working_dir: /opt/src/user-registration/src
+
+volumes:
+  postgres_data:
