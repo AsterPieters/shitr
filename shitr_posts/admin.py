@@ -5,5 +5,5 @@ from .models import ShitrPost
 
 @admin.register(ShitrPost)
 class ShitrPostAdmin(admin.ModelAdmin):
-    list_display = ('location', 'username', 'rating')
+    list_display = ('post_name', 'location', 'username', 'created_at')
     search_fields = ('location', 'username')
