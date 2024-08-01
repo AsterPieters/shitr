@@ -15,8 +15,8 @@ const HomePage = () => {
         <div id="posts-container">
             {posts.map((post, index) => (
                 <div key={index} className="post">
-                    <h2>{post.title}</h2>
-                    <p>{post.body}</p>
+                    <h2>{post.location}</h2>
+                    <p>{post.rating}/5</p>
                 </div>
             ))}
         </div>
