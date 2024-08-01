@@ -18,4 +18,4 @@ $ pip install psycopg2
 
 # Npm packages
 npm install react-router-dom
-
+npm install axios styled-components
