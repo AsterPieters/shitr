@@ -1,8 +1,8 @@
 # shitr_users/urls.py
 
 from django.urls import path
-from .views import create_post
+from .views import shitr_posts
 
 urlpatterns = [
-    path('create/', create_post),
+    path('shitr_posts/', shitr_posts),
 ]
