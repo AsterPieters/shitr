@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m21uwm=nwhkdlbnr8b9$zhx5_m(0h$60e1-=5x*bv&7)4e7#+8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'shitr',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'shitr-db-1',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

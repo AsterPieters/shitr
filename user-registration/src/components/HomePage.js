@@ -5,7 +5,7 @@ const HomePage = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8081/api/posts/shitr_posts/')
+        fetch('https://aster-api.ateam.gig.tech/api/posts/shitr_posts/')
             .then(response => response.json())
             .then(data => setPosts(data))
             .catch(error => console.error('Error fetching data:', error));
