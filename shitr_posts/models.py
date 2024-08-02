@@ -3,11 +3,12 @@
 from django.db import models
 
 class ShitrPostManager(models.Manager):
-    def create_post(self, post_name, location, username, comfort, smell, aesthetic, toilet_paper, overall_experience, description):
+    def create_post(self, post_name, location, username, image, comfort, smell, aesthetic, toilet_paper, overall_experience, description):
         post = self.model(
             post_name=post_name,
             location=location,
             username=username,
+            image=image,
             comfort=comfort,
             smell=smell,
             aesthetic=aesthetic,
@@ -24,6 +25,8 @@ class ShitrPost(models.Model):
     location = models.CharField(max_length=100)
     username = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True, null=True)
 
     # Rating
     comfort = models.FloatField()

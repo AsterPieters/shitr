@@ -6,7 +6,11 @@ from .models import ShitrPost
 class ShitrPostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShitrPost
-        fields = ['post_name', 'location', 'username', 'comfort', 'smell', 'aesthetic', 'toilet_paper', 'overall_experience', 'description']
+        fields = [
+            'post_name', 'location', 'username', 'image',
+            'comfort', 'smell', 'aesthetic', 'toilet_paper', 
+            'overall_experience', 'description'
+        ]
         extra_kwargs = {
             'description': {'required': False}  # Make description optional
         }
@@ -18,6 +22,9 @@ class ShitrPostsSerializer(serializers.ModelSerializer):
             post_name=validated_data['post_name'],
             location=validated_data['location'],
             username=validated_data['username'],
+
+            # Image
+            image=validated_data['image'],
             
             # Review
             comfort=validated_data['comfort'],

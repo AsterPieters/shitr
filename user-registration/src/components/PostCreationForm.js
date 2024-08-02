@@ -8,6 +8,9 @@ const PostCreationForm = () => {
   const [location, setLocation] = useState('');
   const [username, setUsername] = useState('');
 
+  // Image
+  const [image, setImage] = useState(null);
+
   // Review metrics
   const [comfort, setComfort] = useState(1);
   const [smell, setSmell] = useState(1);
@@ -20,35 +23,50 @@ const PostCreationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!post_name || !location || !username || description === null) {
-      setError('All fields are required');
+    if (!post_name || !location || !username) {
+      setError('Post name, location, and username are required');
       return;
     }
 
-    const response = await fetch('https://aster-api.ateam.gig.tech/api/posts/shitr_posts/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post_name, location, username, comfort, smell, aesthetic, toilet_paper, overall_experience, description }),
-    });
+    const formData = new FormData();
+    formData.append('post_name', post_name);
+    formData.append('location', location);
+    formData.append('username', username);
+    formData.append('image', image);
+    formData.append('comfort', comfort);
+    formData.append('smell', smell);
+    formData.append('aesthetic', aesthetic);
+    formData.append('toilet_paper', toilet_paper);
+    formData.append('overall_experience', overall_experience);
+    formData.append('description', description || '');  // Use empty string if description is null
 
-    if (response.ok) {
-      console.log('Post created successfully');
-      // Clear the form
-      setPost_name('');
-      setLocation('');
-      setUsername('');
-      setComfort(1);
-      setSmell(1);
-      setAesthetic(1);
-      setToilet_paper(1);
-      setOverall_experience(1);
-      setDescription('');
-      setError(null);  // Clear error message
-    } else {
-      const errorText = await response.text();
-      setError(errorText || 'Failed to create post');
+    try {
+      const response = await fetch('http://127.0.0.1:8081/api/posts/shitr_posts/', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log('Post created successfully');
+        // Clear the form
+        setPost_name('');
+        setLocation('');
+        setUsername('');
+        setImage(null);
+        setComfort(1);
+        setSmell(1);
+        setAesthetic(1);
+        setToilet_paper(1);
+        setOverall_experience(1);
+        setDescription('');
+        setError(null);  // Clear error message
+      } else {
+        const errorText = await response.text();
+        setError(errorText || 'Failed to create post');
+      }
+    } catch (error) {
+      setError('An error occurred while creating the post');
+      console.error('Error creating post:', error);
     }
   };
 
@@ -79,6 +97,14 @@ const PostCreationForm = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+      </label>
+      <label htmlFor="image">
+        Image:
+        <input
+          id="image"
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
         />
       </label>
       <label htmlFor="comfort">
