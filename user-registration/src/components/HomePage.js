@@ -3,6 +3,7 @@ import './HomePage.css';
 
 const HomePage = () => {
     const [posts, setPosts] = useState([]);
+    const [expandedImage, setExpandedImage] = useState(null);
 
     useEffect(() => {
         fetch('http://127.0.0.1:8081/api/posts/shitr_posts/')
@@ -10,6 +11,10 @@ const HomePage = () => {
             .then(data => setPosts(data))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
+
+    const handleImageClick = (image) => {
+        setExpandedImage(expandedImage === image ? null : image);
+    };
 
     return (
         <div id="posts-container">
@@ -19,12 +24,13 @@ const HomePage = () => {
                     <h3>{post.location}</h3>
                     <h4>{post.post_name}</h4>
                     
-                    {/* Display the image */}
+                    {/* Display the image with conditional styling */}
                     {post.image && (
                         <img 
                             src={`http://127.0.0.1:8081${post.image}`} 
                             alt={post.post_name} 
-                            style={{ width: '100%', height: 'auto' }} 
+                            onClick={() => handleImageClick(`http://127.0.0.1:8081${post.image}`)}
+                            className={expandedImage === `http://127.0.0.1:8081${post.image}` ? 'expanded' : 'thumbnail'}
                         />
                     )}
 
@@ -42,4 +48,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

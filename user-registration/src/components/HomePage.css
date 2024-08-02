@@ -62,3 +62,21 @@ h5{
 .post  {
   font-weight: bold;
 }
+
+.thumbnail {
+    max-width: 100px; /* Thumbnail size */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.expanded {
+    max-width: 400px; /* Expanded size */
+    cursor: zoom-out; /* Change cursor to indicate zoom out */
+    transition: transform 0.3s ease; /* Smooth transition */
+    z-index: 10; /* Ensure image is above other content */
+    position: relative; /* Ensure proper layering */
+}
+
+.thumbnail:hover {
+    transform: scale(1.1); /* Slightly enlarge thumbnail on hover */
+}
