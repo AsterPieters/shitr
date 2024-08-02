@@ -9,7 +9,7 @@ from .serializers import ShitrPostsSerializer
 @api_view(['POST', 'GET'])
 def shitr_posts(request):
     if request.method == 'GET':
-        posts = ShitrPost.objects.all()
+        posts = ShitrPost.objects.all().order_by('-created_at')
         serializer = ShitrPostsSerializer(posts, many=True)
         return Response(serializer.data)
 
